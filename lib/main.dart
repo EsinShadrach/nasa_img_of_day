@@ -108,6 +108,7 @@ class _HomePageState extends State<HomePage> {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
           seedColor: mostProminentColor ?? context.colorScheme.primary,
+          primary: mostProminentColor,
         ),
       ),
       home: AnimatedSwitcher(
@@ -115,8 +116,8 @@ class _HomePageState extends State<HomePage> {
         child: Scaffold(
           floatingActionButton: Builder(builder: (inneContext) {
             return FloatingActionButton(
-              backgroundColor: inneContext.colorScheme.secondary,
-              foregroundColor: inneContext.colorScheme.onSecondary,
+              backgroundColor: inneContext.colorScheme.primary,
+              foregroundColor: inneContext.colorScheme.onPrimary,
               onPressed: () {
                 //
               },
