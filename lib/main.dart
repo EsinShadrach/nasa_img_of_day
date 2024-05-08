@@ -29,12 +29,14 @@ class HomePage extends StatelessWidget {
         future: GetPicOfDay().getPicOfDay(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
+            // Astronomy themed loading spinner
             return const Center(
               child: CircularProgressIndicator(),
             );
           }
 
           if (snapshot.hasError) {
+            // Astronomy themed error message
             return Center(
               child: Text('Error: ${snapshot.error}'),
             );
