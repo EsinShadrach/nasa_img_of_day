@@ -1,4 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:nasa_img_of_day/api/picture_of_day.dart';
 
 void main() {
   runApp(const MainApp());
@@ -10,10 +12,44 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
+      debugShowCheckedModeBanner: false,
+      home: HomePage(),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: FutureBuilder(
+        future: GetPicOfDay().getPicOfDay(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+
+          if (snapshot.hasError) {
+            return Center(
+              child: Text('Error: ${snapshot.error}'),
+            );
+          }
+
+          var firstPic = snapshot.data![0];
+          return SizedBox(
+            width: double.infinity,
+            height: 500,
+            child: CachedNetworkImage(
+              fit: BoxFit.cover,
+              width: double.infinity,
+              imageUrl: firstPic.hdurl,
+            ),
+          );
+        },
       ),
     );
   }
