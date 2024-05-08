@@ -1,11 +1,11 @@
 class PictureOfTheDay {
-  String title;
-  String explanation;
-  String url;
-  String hdurl;
-  String date;
-  String mediaType;
-  String serviceVersion;
+  String? title;
+  String? explanation;
+  String? url;
+  String? hdurl;
+  String? date;
+  String? mediaType;
+  String? serviceVersion;
   String? copyRight;
 
   PictureOfTheDay({
