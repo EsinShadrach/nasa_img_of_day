@@ -17,7 +17,7 @@ class AsyncMemoizer<T> {
   void reset() {
     if (hasRun) {
       _future = null;
-      _completer = Completer<T>(); // Create a new completer to reset the future
+      _completer = Completer<T>();
     }
   }
 }

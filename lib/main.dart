@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:nasa_img_of_day/api/picture_of_day.dart';
+import 'package:nasa_img_of_day/image_loading.dart';
 
 void main() {
   runApp(const MainApp());
@@ -47,6 +48,7 @@ class HomePage extends StatelessWidget {
               fit: BoxFit.cover,
               width: double.infinity,
               imageUrl: firstPic.hdurl,
+              placeholder: (context, url) => const ImageLoading(),
             ),
           );
         },
